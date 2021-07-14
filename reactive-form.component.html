@@ -1,0 +1,58 @@
+<div class="container">
+  <h3>Login Form - Reactive</h3>
+  <form [formGroup]="loginForm">
+    <!-- HTML form converted into reactive form -->
+    <div class="form-group">
+      <label>Enter Username : <span class="text-danger">*</span></label>
+      <input type="text" class="form-control" formControlName="username" />
+      <!--  {{ loginForm.controls.username.errors | json }} -->
+      <div
+        *ngIf="
+          loginForm.controls.username.errors &&
+          (loginForm.controls.username.dirty ||
+            loginForm.controls.username.touched)
+        "
+      >
+        <p
+          *ngIf="loginForm.controls.username.errors.required"
+          class="alert-danger"
+        >
+          Username is required
+        </p>
+        <p
+          *ngIf="loginForm.controls.username.errors.uNameValid"
+          class="alert-danger"
+        >
+          {{ loginForm.controls.username.errors.uNameValid }}
+        </p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Enter Password : <span class="text-danger">*</span></label>
+      <input type="password" class="form-control" formControlName="password" />
+      <p
+        *ngIf="
+          loginForm.controls.password.errors &&
+          (loginForm.controls.password.dirty ||
+            loginForm.controls.password.touched)
+        "
+        class="alert-danger"
+      >
+        Password is required
+      </p>
+    </div>
+
+    <div class="form-group">
+      <button
+        class="btn btn-primary"
+        (click)="login()"
+        [disabled]="loginForm.invalid"
+      >
+        Login
+      </button>
+      <button type="reset" class="btn">Cancel</button>
+    </div>
+    <p class="text-success" *ngIf="successMessage">{{ successMessage }}</p>
+    <p class="text-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </form>
+</div>
