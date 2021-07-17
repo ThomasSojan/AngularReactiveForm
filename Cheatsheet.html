@@ -1,0 +1,135 @@
+
+<!--create angular form !-->
+<form  [formGroup] = "" (ngSubmit) = "">
+          
+ </form>
+ 
+ 
+ 
+ <!--TEXT FIELD with validation error message !-->
+  <div class="form-group">
+                  <label  for="" class="font-weight-bold">Title </label>
+                  <input type="text" id = "" class="form-control"  formControlName = "">
+                  <p *ngIf = "FORMGROUPNAME.controls.FORMCONTROLNAME.hasError('maxlength')||
+                  FORMGROUPNAME.controls.FORMCONTROLNAME.hasError('minlength')" class = "text-danger">Error Message here</p>
+    </div>
+
+
+<!--TEXT FIELD  with touched and dirty error message !-->	
+<div class="form-group">
+                  <label  for="" class="font-weight-bold">Title </label>
+                  <input type="text" id = "" class="form-control"  formControlName = "">
+                  <p *ngIf = "FORMGROUPNAME.controls.FORMCONTROLNAME.touched||
+                  FORMGROUPNAME.controls.FORMCONTROLNAME.dirty" class = "text-danger">Error Message here</p>
+    </div>
+
+
+<!--TEXT FIELD with multiple message different line!-->	
+<div class="form-group">
+                  <label for="" class="font-weight-bold">Title</label>
+                  <input type="text" id = "" class="form-control"  formControlName = "">
+                  <p *ngIf = "FORMGROUPNAME.controls.FORMCONTROLNAME.hasError('maxlength')||
+                  FORMGROUPNAME.controls.FORMCONTROLNAME.hasError('minlength')" class = "text-danger">Should be 12 digits</p>
+                  <p *ngIf="FORMGROUPNAME.controls.FORMCONTROLNAME.errors.CUSTOM_fn_Validator_Key">alphaNotAllowed</p>
+				  .....
+                 </div>
+				 
+
+
+<!--RADIO BUTTON In-line !-->
+ <div class="form-group">
+         <label >Title:</label><br>
+         <div class="form-check form-check-inline">
+          <label for="" class="form-check-label">
+           <input class="form-check-input" id = "" type="radio"  value = "" formControlName =""> Label-1  &nbsp;            
+          </label>
+          <label for="" class="form-check-label">
+           <input class="form-check-input" type="radio" id = "" value =""  formControlName =""> Label-2
+          </label>
+        </div>
+        </div>	
+
+
+
+<!--DATE FIELD with Validation !-->		
+ <div class="form-group">
+          <label for="">JoiningDate:</label>
+          <input type="date" id = "" class="form-control" formControlName ="">
+          <span id="joiningDateError" class="text-danger"
+          *ngIf = "FORMGROUPNAME.controls.FORMCONTROLNAME.invalid &&
+          FORMGROUPNAME.controls.FORMCONTROLNAME.dirty">
+        Please provide this field.
+        </span>
+         </div>
+
+
+<!-- GENERATED DROP DOWN LIST !-->	
+<div class="form-group">
+          <label for = "">Make:</label>
+          <select id ="" class="form-control" formControlName ="">
+            <option value = ""> --Select-- </option>
+            <option *ngFor = "let type of LIST_FROM_COMPONENT" value = "{{type}}">{{type}}</option>
+           </select> 
+           <span id="makeError" class = "text-danger" *ngIf = "FORMGROUPNAME.controls.FORMCONTROLNAME.invalid &&
+           FORMGROUPNAME.controls.FORMCONTROLNAME.dirty">
+          please provide this field</span>
+         </div>	 
+
+<!-- SUBMIT BUTTON !-->
+ <div>
+         <button type="submit" class="btn btn-primary" [disabled] = "!FORMGROUPNAME.valid">
+          Register</button>
+        </div>		 
+				 
+<!-- RESET BUTTON !-->
+<div>
+	<button type="reset" class="btn">Cancel</button>				 
+</div>	
+
+
+<!-- DISPLAY DETAILS  outside form tag!-->
+ <div *ngIf="RESPONSE_VARIABLE"><!--EX: myAadhar !-->
+           <div>
+             <label >Aadhar Number:</label>
+             <span>{{myAadhar.aadharNumber|aadharNumber}}</span>
+           </div>
+           <div>
+              <label >Name:</label>
+              <span>{{myAadhar.name}}</span>
+            </div>
+            <div>
+                <label >Address:</label>
+                <span>{{myAadhar.address}}</span>
+              </div>
+         
+</div>		
+
+<!-- DISPLAY DETAILS TABULAR FORM  outside form tag!-->
+<table class="table">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Bruce</td>
+        <td>Wayne</td>
+        <td>Gotham City</td>
+      </tr>
+      . . .
+    </tbody>
+</table>
+
+
+
+
+
+
+
+<!-- RESPONSE MESSAGE outside form tag-->
+ <span class="text-success">{{SUCCESS_VARIABLE}}</span>
+  <span class="text-danger">{{ERROR_VARIABLE}}</span>	 
+				 
