@@ -4,6 +4,7 @@
 
 
 
+
 <!--create angular form !-->
 <form  [formGroup] = "" (ngSubmit) = "">
           
@@ -12,11 +13,23 @@
  
  
  <!--TEXT FIELD with validation error message !-->
+ 
+ <!--EX 1 !-->
+  <div class="form-group">
+                  <label  for="" class="font-weight-bold">Full Name </label>
+                  <input type="text" id = "" class="form-control"  formControlName = "">
+                  <span id="   Error" *ngIf = "FORMGROUPNAME.controls.FORMCONTROLNAME.invalid &&
+                  FORMGROUPNAME.controls.FORMCONTROLNAME.dirty"
+                   class = "text-danger">Sorry,the entered name is invalid pattern</span>
+    </div>
+	
+	
+<!--EX 2 !-->	
   <div class="form-group">
                   <label  for="" class="font-weight-bold">Title </label>
                   <input type="text" id = "" class="form-control"  formControlName = "">
-                  <p *ngIf = "FORMGROUPNAME.controls.FORMCONTROLNAME.hasError('maxlength')||
-                  FORMGROUPNAME.controls.FORMCONTROLNAME.hasError('minlength')" class = "text-danger">Error Message here</p>
+                  <span id=" " *ngIf = "FORMGROUPNAME.controls.FORMCONTROLNAME.hasError('maxlength')||
+                  FORMGROUPNAME.controls.FORMCONTROLNAME.hasError('minlength')" class = "text-danger">Error Message here</span>
     </div>
 
 
@@ -24,8 +37,8 @@
 <div class="form-group">
                   <label  for="" class="font-weight-bold">Title </label>
                   <input type="text" id = "" class="form-control"  formControlName = "">
-                  <p *ngIf = "FORMGROUPNAME.controls.FORMCONTROLNAME.touched||
-                  FORMGROUPNAME.controls.FORMCONTROLNAME.dirty" class = "text-danger">Error Message here</p>
+                  <span id=" " *ngIf = "FORMGROUPNAME.controls.FORMCONTROLNAME.touched||
+                  FORMGROUPNAME.controls.FORMCONTROLNAME.dirty" class = "text-danger">Error Message here</span>
     </div>
 
 
@@ -33,9 +46,9 @@
 <div class="form-group">
                   <label for="" class="font-weight-bold">Title</label>
                   <input type="text" id = "" class="form-control"  formControlName = "">
-                  <p *ngIf = "FORMGROUPNAME.controls.FORMCONTROLNAME.hasError('maxlength')||
-                  FORMGROUPNAME.controls.FORMCONTROLNAME.hasError('minlength')" class = "text-danger">Should be 12 digits</p>
-                  <p *ngIf="FORMGROUPNAME.controls.FORMCONTROLNAME.errors.CUSTOM_fn_Validator_Key">alphaNotAllowed</p>
+                  <span *ngIf = "FORMGROUPNAME.controls.FORMCONTROLNAME.hasError('maxlength')||
+                  FORMGROUPNAME.controls.FORMCONTROLNAME.hasError('minlength')" class = "text-danger">Should be 12 digits</span>
+                  <span id=" " *ngIf="FORMGROUPNAME.controls.FORMCONTROLNAME.errors.CUSTOM_fn_Validator_Key">alphaNotAllowed</span>
 				  .....
                  </div>
 				 
@@ -60,7 +73,7 @@
  <div class="form-group">
           <label for="">JoiningDate:</label>
           <input type="date" id = "" class="form-control" formControlName ="">
-          <span id="joiningDateError" class="text-danger"
+          <span id="" class="text-danger"
           *ngIf = "FORMGROUPNAME.controls.FORMCONTROLNAME.invalid &&
           FORMGROUPNAME.controls.FORMCONTROLNAME.dirty">
         Please provide this field.
@@ -136,5 +149,41 @@
 
 <!-- RESPONSE MESSAGE outside form tag-->
  <span class="text-success">{{SUCCESS_VARIABLE}}</span>
-  <span class="text-danger">{{ERROR_VARIABLE}}</span>	 
+ 
+ <span class="text-danger">{{ERROR_VARIABLE}}</span>
+
+
+
+
+
+
+
+ <div *ngIf =  "errorMessage != null">
+         <span class="text-danger">
+           {{errorMessage}}
+         </span>
+       </div>
+
+       <div *ngIf =  "registrationId != null">
+        <span class="text-success">
+          {{registrationId|successMessagePipe}} 
+        </span>
+      </div>  
+				 
+				 
+				 
+				 
+				 
+				 
+ <div *ngIf =  "errorMessage != undefined || errorMessage != null">
+              <span class="text-danger">
+                {{errorMessage}}
+              </span>
+            </div>
+
+            <div *ngIf =  "successMessage != undefined || successMessage != null">
+                <span class="text-success">
+                  {{successMessage}}
+                </span>
+              </div>				 
 				 
